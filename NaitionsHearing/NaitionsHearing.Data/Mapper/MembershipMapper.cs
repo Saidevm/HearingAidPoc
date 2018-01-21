@@ -7,21 +7,20 @@ using System.Threading.Tasks;
 
 namespace NaitionsHearing.Data.Mapper
 {
-    public class MemberMapper : EntityTypeConfiguration<Member>
+    public class MembershipMapper : EntityTypeConfiguration<Membership>
     {
-        public MemberMapper()
+        public MembershipMapper()
         {
-            this.ToTable("Members");
+            this.ToTable("MemberShips");
 
             this.HasKey(c => c.Id);
             this.Property(c => c.Id).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
             this.Property(c => c.Id).IsRequired();
-
-            this.Property(c => c.Dob).IsRequired();
-            this.Property(c => c.Gender).IsRequired();
-            this.Property(c => c.Name).IsRequired();
+            
 
             //this.HasRequired(c => c.InsurancePlans).WithMany().Map(s => s.MapKey("InsurancePlanId"));
+            this.HasOptional(c => c.InsurancePlan).WithMany(m=>m.Memberships).Map(s => s.MapKey("InsurancePlanId"));
+            this.HasOptional(c => c.Member).WithMany(m=>m.InsurancePlanMemberShips).Map(s => s.MapKey("MemberId"));
         }
     }
 }

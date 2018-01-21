@@ -47,13 +47,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\Membership.cs" />
     <Compile Include="Entity\InsurancePlan.cs" />
     <Compile Include="Entity\Member.cs" />
     <Compile Include="HearingDbContext.cs" />
     <Compile Include="HearingRepo.cs" />
     <Compile Include="IHearingRepo.cs" />
     <Compile Include="Mapper\InsurancePlanMapper.cs" />
+    <Compile Include="Mapper\MembershipMapper.cs" />
     <Compile Include="Mapper\MemberMapper.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

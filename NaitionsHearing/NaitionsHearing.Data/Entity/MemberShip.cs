@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace NaitionsHearing.Data
 {
-    public class InsurancePlan
+    public class Membership
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public List<Membership> Memberships { get; set; }
+        public Member Member { get; set; }
+        public InsurancePlan InsurancePlan { get; set; }
     }
 }

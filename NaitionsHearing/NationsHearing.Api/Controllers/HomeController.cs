@@ -11,7 +11,6 @@ namespace NationsHearing.Api.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
-            int[][] a = null;
             return View();
         }
     }

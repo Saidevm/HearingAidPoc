@@ -74,7 +74,7 @@ namespace NaitionsHearing.Data
                 Name = "Test Male Member1",
                 Dob = DateTime.UtcNow.AddDays(-365 * 50),
                 Gender = Gender.Male,
-                InsurancePlans = linp,
+                //InsurancePlans = linp,
                 EnrollmentDate = DateTime.UtcNow.AddDays(-365)
             };
 
@@ -83,7 +83,7 @@ namespace NaitionsHearing.Data
                 Name = "Test Female Member1",
                 Dob = DateTime.UtcNow.AddDays(-365 * 50),
                 Gender = Gender.Female,
-                InsurancePlans = linp,
+                //InsurancePlans = linp,
                 EnrollmentDate = DateTime.UtcNow.AddDays(-365)
             };
 

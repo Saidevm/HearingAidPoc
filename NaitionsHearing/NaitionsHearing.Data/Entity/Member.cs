@@ -10,15 +10,14 @@ namespace NaitionsHearing.Data
     {
         public Member()
         {
-            InsurancePlans = new List<InsurancePlan>();
+            InsurancePlanMemberShips = new List<Membership>();
         }
         public int Id { get; set; }
         public string Name { get; set; }
-        public int InsurancePlanId { get; set; }
         public DateTime Dob { get; set; }
         public DateTime EnrollmentDate { get; set; }
         public Gender Gender { get; set; }
-        public virtual List<InsurancePlan> InsurancePlans { get; set; }
+        public virtual List<Membership> InsurancePlanMemberShips { get; set; }
     }
 
     public enum Gender

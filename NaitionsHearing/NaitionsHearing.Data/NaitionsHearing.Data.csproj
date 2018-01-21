@@ -56,13 +56,21 @@
     <Compile Include="Mapper\InsurancePlanMapper.cs" />
     <Compile Include="Mapper\MembershipMapper.cs" />
     <Compile Include="Mapper\MemberMapper.cs" />
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\201801211502304_dd01.cs" />
+    <Compile Include="Migrations\201801211502304_dd01.Designer.cs">
+      <DependentUpon>201801211502304_dd01.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201801211502304_dd01.resx">
+      <DependentUpon>201801211502304_dd01.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

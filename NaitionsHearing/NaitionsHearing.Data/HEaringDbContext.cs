@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace NaitionsHearing.Data
 {
-    public class HearingDbContext: DbContext
+    public class HearingDbContext : DbContext
     {
-        public HearingDbContext():base("constring")
+        public HearingDbContext() : base("name=constring")
         {
             Configuration.ProxyCreationEnabled = false;
             Configuration.LazyLoadingEnabled = false;
@@ -21,15 +21,17 @@ namespace NaitionsHearing.Data
 
         public DbSet<Member> Members { get; set; }
         public DbSet<InsurancePlan> InsurancePlans { get; set; }
+        public DbSet<Membership> Memberships { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new MemberMapper());
             modelBuilder.Configurations.Add(new InsurancePlanMapper());
+            modelBuilder.Configurations.Add(new MembershipMapper());
         }
     }
 
-    public class HearingContextMigrationConfiguration: DbMigrationsConfiguration<HearingDbContext>
+    public class HearingContextMigrationConfiguration : DbMigrationsConfiguration<HearingDbContext>
     {
         public HearingContextMigrationConfiguration()
         {
@@ -56,7 +58,7 @@ namespace NaitionsHearing.Data
 
         public void Seed()
         {
-            if(_ctx.Members.Any())
+            if (_ctx.Members.Any())
             {
                 return;
             }
@@ -66,8 +68,8 @@ namespace NaitionsHearing.Data
                 Name = "Jeevan Suravi"
             };
 
-            var linp = new List<InsurancePlan>();
-            linp.Add(inp);
+            var linp = new InsurancePlan();
+            //linp.Add(inp);
 
             var mem1 = new Member
             {
@@ -87,9 +89,32 @@ namespace NaitionsHearing.Data
                 EnrollmentDate = DateTime.UtcNow.AddDays(-365)
             };
 
+            var mship = new Membership
+            {
+                InsurancePlan = inp,
+                Member = mem1
+            };
+
+            var mship1 = new Membership
+            {
+                InsurancePlan = inp,
+                Member = mem2
+            };
+
             _ctx.Members.Add(mem1);
             _ctx.Members.Add(mem2);
+            _ctx.InsurancePlans.Add(inp);
+            _ctx.Memberships.Add(mship1);
+            _ctx.Memberships.Add(mship);
             _ctx.SaveChanges();
+
+          
+
+            //_ctx.Members.Add(mem1);
+            //_ctx.Members.Add(mem2);
+            //_ctx.InsurancePlans.Add(linp);
+            //_ctx.SaveChanges();
+
         }
     }
 

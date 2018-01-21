@@ -14,11 +14,11 @@ namespace NaitionsHearing.Data.Mapper
             this.ToTable("InsurancePlans");
 
             this.HasKey(c => c.Id);
-            this.Property(c => c.Id).IsRequired();
             this.Property(c => c.Id).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
+            this.Property(c => c.Id).IsRequired();
 
             this.Property(c => c.Name).IsRequired();
-            this.Property(c => c.Name).HasMaxLength(255);
+            //this.Property(c => c.Name).HasMaxLength(255);
         }
     }
 }

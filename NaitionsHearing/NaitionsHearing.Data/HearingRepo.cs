@@ -22,5 +22,57 @@ namespace NaitionsHearing.Data
         {
             return _ctx.Members.Where(c => c.Name == name).FirstOrDefault();
         }
+
+        public bool MemberEligibility(int memberId)
+        {
+            bool isEligible = false;
+            var eligibleMember = (from m in _ctx.Members
+                                  join ms in _ctx.Memberships
+                                  on m.Id equals ms.Member.Id
+                                  join i in _ctx.InsurancePlans
+                                  on ms.InsurancePlan.Id equals i.Id
+                                  where m.Id == memberId
+                                  select m).FirstOrDefault();
+
+
+            if (eligibleMember.Gender == Gender.Male && eligibleMember.Dob <= DateTime.UtcNow.AddYears(-40) && eligibleMember.EnrollmentDate <= DateTime.UtcNow.AddMonths(-6))
+            {
+                isEligible = true;
+            }
+
+            if (eligibleMember.Gender == Gender.Female && eligibleMember.Dob <= DateTime.UtcNow.AddYears(-35) && eligibleMember.EnrollmentDate <= DateTime.UtcNow.AddMonths(-3))
+            {
+                isEligible = true;
+            }
+
+
+            return isEligible;
+        }
+
+        public bool MemberEligibilityByName(string name)
+        {
+            bool isEligible = false;
+            var eligibleMember = (from m in _ctx.Members
+                                  join ms in _ctx.Memberships
+                                  on m.Id equals ms.Member.Id
+                                  join i in _ctx.InsurancePlans
+                                  on ms.InsurancePlan.Id equals i.Id
+                                  where m.Name == name
+                                  select m).FirstOrDefault();
+
+
+            if (eligibleMember.Gender == Gender.Male && eligibleMember.Dob <= DateTime.UtcNow.AddYears(-40) && eligibleMember.EnrollmentDate <= DateTime.UtcNow.AddMonths(-6))
+            {
+                isEligible = true;
+            }
+
+            if (eligibleMember.Gender == Gender.Female && eligibleMember.Dob <= DateTime.UtcNow.AddYears(-35) && eligibleMember.EnrollmentDate <= DateTime.UtcNow.AddMonths(-3))
+            {
+                isEligible = true;
+            }
+
+
+            return isEligible;
+        }
     }
 }

@@ -15,12 +15,26 @@ namespace NationsHearing.Api.Controllers
         {
             hrepo = repo;
         }
-        [Route(@"Members/Search/{name}")]
+
+        [Route(@"Members/Id/{name}")]
         [HttpGet]
-        public int SearchByMember(string name)
+        public int GetId(string name)
         {
            return hrepo.GetMember(name);
         }
 
+        [Route(@"Members/{name}")]
+        [HttpGet]
+        public Member Get(string name)
+        {
+            return hrepo.SearchMember(name);
+        }
+
+        [Route(@"Members/Eligibility/{name}")]
+        [HttpGet]
+        public bool IsEligible(string name)
+        {
+            return hrepo.MemberEligibilityByName(name);
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace NaitionsHearing.Controllers
         {
             var audienceuri = "http://localhost:49817/";
             HttpClient apiClient = new HttpClient();
-            var requestUri = audienceuri + "/members/search/sai";
+            var requestUri = audienceuri + "/members/id/sai";
             var res = apiClient.GetAsync(requestUri).Result;
             var memberid = res.Content.ReadAsStringAsync();
             return View();

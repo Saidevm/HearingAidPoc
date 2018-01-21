@@ -10,5 +10,6 @@ namespace NaitionsHearing.Data
     {
         int GetMember(string name);
         Member SearchMember(string name);
+        bool MemberEligibilityByName(string name);
     }
 }
